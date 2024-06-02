@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EarthSpin : MonoBehaviour
+{
+    [SerializeField]
+    float spinSpeed = 0;//é©ì]ë¨ìx
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+        Transform earthTransform = this.transform;
+
+        earthTransform.Rotate(0, -spinSpeed, 0);//"-"Ç…ÇÊÇËé©ì]Ççƒåª
+    }
+}
