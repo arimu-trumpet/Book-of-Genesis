@@ -23,6 +23,11 @@ namespace Fungus
         [HideInInspector]
         [SerializeField] protected int version = 0; // Default to 0 to always trigger an update for older versions of Fungus.
 
+        public void SetBooleanVariable(bool isEmptyName, bool v)
+        {
+            throw new NotImplementedException();
+        }
+
         [HideInInspector]
         [SerializeField] protected Vector2 scrollPos;
 

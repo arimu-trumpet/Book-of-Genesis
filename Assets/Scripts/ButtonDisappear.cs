@@ -18,6 +18,7 @@ public class ButtonDisappear : MonoBehaviour
 
     public void OnClick()//‰Ÿ‚³‚ê‚½ƒ{ƒ^ƒ“‚ð‚¾‚ñ‚¾‚ñ“§–¾‚É‚·‚é
     {
+        button.interactable = false; //Œ©‚½–Ú‚ÍŽc‚µ‚Ä”»’è‚ð–³‚­‚·
         StartCoroutine(Disapper());
     }
 
