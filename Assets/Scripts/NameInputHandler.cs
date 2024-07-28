@@ -25,7 +25,7 @@ public class NameInputHandler : MonoBehaviour
         }
         else
         {
-            flowchart.SetStringVariable("nameInput", inputName);
+            flowchart.SetStringVariable("Light", inputName);
             flowchart.SendFungusMessage(enteredMessage);
             flowchart.SetBooleanVariable("isEnteredName", true);
             // Fungus‚Ì•Ï” playerName ‚Éƒ†[ƒU[“ü—Í‚ğİ’è
