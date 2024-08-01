@@ -2147,8 +2147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad3cb42ee2d47b44bcd0a76d4208791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightInputField: {fileID: 1639723478}
-  lightFlowchart: {fileID: 1919953295}
+  inputField: {fileID: 1639723478}
+  flowchart: {fileID: 1919953295}
 --- !u!114 &1284325000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2161,8 +2161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd4843911cf1c04f96adf765728f2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayInputField: {fileID: 1449342394}
-  dayFlowchart: {fileID: 1919953295}
+  inputField: {fileID: 1449342394}
+  flowchart: {fileID: 1919953295}
 --- !u!1 &1449342390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2623,8 +2623,6 @@ GameObject:
   - component: {fileID: 1919953298}
   - component: {fileID: 1919953300}
   - component: {fileID: 1919953301}
-  - component: {fileID: 1919953302}
-  - component: {fileID: 1919953303}
   - component: {fileID: 1919953299}
   - component: {fileID: 1919953309}
   - component: {fileID: 1919953306}
@@ -2727,12 +2725,10 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1919953310}
+  - {fileID: 1919953319}
   selectedCommands: []
   variables:
   - {fileID: 1919953300}
-  - {fileID: 1919953302}
-  - {fileID: 1919953303}
   - {fileID: 1919953315}
   - {fileID: 1919953314}
   description: 
@@ -2877,36 +2873,6 @@ MonoBehaviour:
     booleanRef: {fileID: 0}
     booleanVal: 1
   targetGameObjectOLD: {fileID: 0}
---- !u!114 &1919953302
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919953292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d02d9822eec54c98afe95bb497211b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scope: 0
-  key: isEnptyName
-  value: 0
---- !u!114 &1919953303
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919953292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d02d9822eec54c98afe95bb497211b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scope: 0
-  key: isEnteredName
-  value: 0
 --- !u!114 &1919953304
 MonoBehaviour:
   m_ObjectHideFlags: 2

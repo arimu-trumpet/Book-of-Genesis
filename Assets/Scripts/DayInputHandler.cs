@@ -7,30 +7,29 @@ using Fungus;
 public class DayInputHandler : MonoBehaviour
 {
     [SerializeField]
-     InputField dayInputField;                       // InputFieldコンポーネントを参照
+     InputField inputField;                       // InputFieldコンポーネントを参照
     [SerializeField]
-     Flowchart dayFlowchart;                         // Flowchartコンポーネントを参照
+     Flowchart flowchart;                         // Flowchartコンポーネントを参照
 
     private string enteredMessage = "DayEntered";    //名前が入力されてた時
     private string emptyMessage = "DayEmpty";        //名前が入力されてないとき
     void Start()
     {
         // InputFieldのOn End Editイベントにリスナーを追加
-        dayInputField.onEndEdit.AddListener(OnDayInputEnd);
+        inputField.onEndEdit.AddListener(OnDayInputEnd);
     }
+
     void OnDayInputEnd(string inputName)
     {
         if (string.IsNullOrEmpty(inputName))
         {
-            dayFlowchart.SendFungusMessage(emptyMessage);
+            flowchart.SendFungusMessage(emptyMessage);
             //もし名前が空だったらセットしても意味ないからelse内で処理
-            dayFlowchart.SetBooleanVariable("isEmptyName", true);
         }
         else
         {
-            dayFlowchart.SetStringVariable("Day", inputName);
-            dayFlowchart.SendFungusMessage(enteredMessage);
-            dayFlowchart.SetBooleanVariable("isEnteredName", true);
+            flowchart.SetStringVariable("Day", inputName);
+            flowchart.SendFungusMessage(enteredMessage);
             // Fungusの変数 playerName にユーザー入力を設定
 
         }
