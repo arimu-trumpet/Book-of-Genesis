@@ -7,12 +7,12 @@ using Fungus;
 public class DayInputHandler : MonoBehaviour
 {
     [SerializeField]
-     InputField inputField;                       // InputFieldコンポーネントを参照
+     InputField inputField;                          // InputFieldコンポーネントを参照
     [SerializeField]
-     Flowchart flowchart;                         // Flowchartコンポーネントを参照
+     Flowchart flowchart;                            // Flowchartコンポーネントを参照
 
     private string enteredMessage = "DayEntered";    //名前が入力されてた時
-    private string emptyMessage = "DayEmpty";        //名前が入力されてないとき
+    private string emptyMessage = "Empty";           //名前が入力されてないとき
     void Start()
     {
         // InputFieldのOn End Editイベントにリスナーを追加
