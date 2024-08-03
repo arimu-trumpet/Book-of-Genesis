@@ -28,7 +28,7 @@ public class CreateInputHandler : MonoBehaviour
         }
         else
         {
-            if (createStepNum == 0)
+            if (createStepNum == 0)   //ˆê“ú–Ú
             {
                 flowchart.SetStringVariable("Light", input);
                 flowchart.SendFungusMessage("LightEntered");
@@ -36,16 +36,19 @@ public class CreateInputHandler : MonoBehaviour
                 form.text = "";
                 //add:•¶š”§ŒÀ
             }
-            if (createStepNum == 1)
+            if (createStepNum == 1)   //ˆê“ú–Ú
             {
                 flowchart.SetStringVariable("Day", input);
                 flowchart.SendFungusMessage("DayEntered");
                 InputField form = inputField.GetComponent<InputField>();
                 form.text = "";
             }
-            if (createStepNum == 2)
+            if (createStepNum == 2)   //ˆê“ú–Ú
             {
-
+                flowchart.SetStringVariable("Night", input);
+                flowchart.SendFungusMessage("NightEntered");
+                InputField form = inputField.GetComponent<InputField>();
+                form.text = "";
 
             }
             if (createStepNum == 3)
@@ -65,7 +68,7 @@ public class CreateInputHandler : MonoBehaviour
             }
             if (createStepNum == 6)
             {
-                //µ“ú–Ú
+               
                
             }
             createStepNum++;
