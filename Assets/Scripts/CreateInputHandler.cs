@@ -8,12 +8,13 @@ public class CreateInputHandler : MonoBehaviour
 {
     [SerializeField]
     InputField inputField;
+
     [SerializeField]
-    Flowchart flowchart;
+    Flowchart[] flowchart;
 
     private string emptyMessage = "Empty";   //インプットフィールドに入力されていないとき
 
-    private int createStepNum = 0;　　　　　 //何日目　 
+    private int createStepNum = 0;　　　　　 //0～2:一日目　3:二日目　 
 
     void Start()
     {
@@ -24,36 +25,46 @@ public class CreateInputHandler : MonoBehaviour
         if (string.IsNullOrEmpty(input))
         {
             Debug.Log("null string");
-            flowchart.SendFungusMessage(emptyMessage);
+            if (createStepNum <= 2)
+            {
+                flowchart[0].SendFungusMessage(emptyMessage);
+            }
+            if (createStepNum == 3)
+            {
+                flowchart[1].SendFungusMessage(emptyMessage);
+            }
         }
         else
         {
             if (createStepNum == 0)   //一日目
             {
-                flowchart.SetStringVariable("Light", input);
-                flowchart.SendFungusMessage("LightEntered");
-                InputField form = inputField.GetComponent<InputField>();   
+                flowchart[0].SetStringVariable("Light", input);
+                flowchart[0].SendFungusMessage("LightEntered");
+                InputField form = inputField.GetComponent<InputField>();
                 form.text = "";
                 //add:文字数制限
             }
             if (createStepNum == 1)   //一日目
             {
-                flowchart.SetStringVariable("Day", input);
-                flowchart.SendFungusMessage("DayEntered");
+                flowchart[0].SetStringVariable("Day", input);
+                flowchart[0].SendFungusMessage("DayEntered");
                 InputField form = inputField.GetComponent<InputField>();
                 form.text = "";
             }
             if (createStepNum == 2)   //一日目
             {
-                flowchart.SetStringVariable("Night", input);
-                flowchart.SendFungusMessage("NightEntered");
+                flowchart[0].SetStringVariable("Night", input);
+                flowchart[0].SendFungusMessage("NightEntered");
                 InputField form = inputField.GetComponent<InputField>();
                 form.text = "";
 
             }
-            if (createStepNum == 3)
+            if (createStepNum == 3)   //二日目
             {
-
+                flowchart[1].SetStringVariable("Sky", input);
+                flowchart[1].SendFungusMessage("SkyEntered");
+                InputField form = inputField.GetComponent<InputField>();
+                form.text = "";
 
             }
             if (createStepNum == 4)
@@ -68,8 +79,8 @@ public class CreateInputHandler : MonoBehaviour
             }
             if (createStepNum == 6)
             {
-               
-               
+
+
             }
             createStepNum++;
         }
