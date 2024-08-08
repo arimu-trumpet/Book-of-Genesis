@@ -36,6 +36,8 @@ public class CreateInputHandler : MonoBehaviour
         }
         else
         {
+            //’:flowchart[n-1“ú–Ú]
+
             if (createStepNum == 0)   //ˆê“ú–Ú
             {
                 flowchart[0].SetStringVariable("Light", input);
@@ -61,20 +63,26 @@ public class CreateInputHandler : MonoBehaviour
             }
             if (createStepNum == 3)   //“ñ“ú–Ú
             {
-                flowchart[1].SetStringVariable("Sky", input);
-                flowchart[1].SendFungusMessage("SkyEntered");
+                flowchart[1].SetStringVariable("Heaven", input);
+                flowchart[1].SendFungusMessage("HeavenEntered");
                 InputField form = inputField.GetComponent<InputField>();
                 form.text = "";
 
             }
-            if (createStepNum == 4)
+            if (createStepNum == 4)   //O“ú–Ú
             {
-
+                flowchart[2].SetStringVariable("Land", input);
+                flowchart[2].SendFungusMessage("LandEntered");
+                InputField form = inputField.GetComponent<InputField>();
+                form.text = "";
 
             }
-            if (createStepNum == 5)
+            if (createStepNum == 5)   //O“ú–Ú
             {
-
+                flowchart[2].SetStringVariable("Sea", input);
+                flowchart[2].SendFungusMessage("SeaEntered");
+                InputField form = inputField.GetComponent<InputField>();
+                form.text = "";
 
             }
             if (createStepNum == 6)
