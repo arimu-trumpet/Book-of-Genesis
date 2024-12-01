@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using System;
-public class EarthStatusManager : MonoBehaviour //人口変化を担う
+public class PopulationIncreaseManager : MonoBehaviour //人口変化を担う
 {
     public float increment;    //EarthManagerからゲットした文明度により変化する公比。
 
@@ -48,7 +48,8 @@ public class EarthStatusManager : MonoBehaviour //人口変化を担う
 
         if (population > _societyChangeThreshold[society])
         {
-            //societyをenumデフォルトのシリアルナンバーに直してあげて足す。それをobject型に変更してあげてSociety型に変更してあげる ToSocietyとかはできないので、超汎用型のobjectにする機能をはさんでいる。　
+            //societyをenumデフォルトのシリアルナンバーに直してあげて足す。
+            //それをobject型に変更してあげてSociety型に変更してあげる ToSocietyとかはできないので、汎用型のobjectにする機能をはさんでいる。　
             society = (Society)Enum.ToObject(typeof(Society), (int)society + 1);
             EarthManager.Instance.EarthInfo.SetSociety(society);
         }
