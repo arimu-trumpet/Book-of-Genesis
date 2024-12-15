@@ -10,7 +10,9 @@ public class AnimationController : MonoBehaviour
 
     [SerializeField] private List<Animator> _humanAttackRunning;
 
-    [SerializeField] private int _occurRebellionPopulation; //人間が反乱する既定の値(各世界ごとにある範囲でランダムせっていしたい)
+    [SerializeField] private int _occurRebellionPopulation; //人間が反乱する既定の人口(各世界ごとにある範囲でランダムせっていしたい)
+
+    private bool _isAnimationPlayed; //人間の反乱が再生されたかどうか:デフォルトでfalse
     void Start()
     {
         _meteoriteImpact.speed = 0;
@@ -26,8 +28,8 @@ public class AnimationController : MonoBehaviour
     void Update()
     {
         // リスト内のすべてのAnimatorに対して処理を実行
-        if (EarthManager.Instance.EarthInfo.Population >= _occurRebellionPopulation)
-        {
+        if (EarthManager.Instance.CurrentEarthInfo.Population >= _occurRebellionPopulation && _isAnimationPlayed == false) //bool型のやつないと、アップデートで繰り返すときにまた最初から再生され続けちゃう
+        {                                                                                                            //_isAnimationPlayedがfalse,つまりアニメーションがまだ一度も再生されていないときにだけこれを再生し始められる
             _humanAttackMoving.speed = 1;
 
             _humanAttackMoving.Play("HumanRebellion");
@@ -40,7 +42,7 @@ public class AnimationController : MonoBehaviour
                 // ランダムな開始時間でアニメーションを再生
                 animator.Play(stateInfo.shortNameHash, 0, Random.Range(0f, 1f));
             }
-  
+            _isAnimationPlayed = true;
         }
     }
     public void Onclik() //滅亡ボタンが押されたとき隕石衝突
@@ -50,4 +52,3 @@ public class AnimationController : MonoBehaviour
         _meteoriteImpact.Play("MeteoriteImpact");
     }
 }
-//人間の反乱周りのアニメーションを調節する

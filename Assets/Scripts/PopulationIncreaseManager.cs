@@ -5,7 +5,7 @@ using UniRx;
 using System;
 public class PopulationIncreaseManager : MonoBehaviour //人口変化を担う
 {
-    public float increment;    //EarthManagerからゲットした文明度により変化する公比。
+    public float increment;    //文明度(EarthManagerからゲットした)により変化する公比。
 
     private int _elapsedTime; //人口の計算に使用
 
@@ -36,22 +36,22 @@ public class PopulationIncreaseManager : MonoBehaviour //人口変化を担う
     {
         _elapsedTime++;
         int population = (int)Mathf.Floor(1 * (1 - Mathf.Pow(increment, _elapsedTime)) / (1 - increment));
-        EarthManager.Instance.EarthInfo.SetPoputaion(population);//unityが扱えるのは21億まで
+        EarthManager.Instance.CurrentEarthInfo.SetPoputaion(population);//unityが扱えるのは21億まで
         Debug.Log(population);
     }
 
     private void IncreaseLevelofSociety()
     {
         //enumのsocietyとの混同を防ぐためにcivilisationを使用する
-        int population = EarthManager.Instance.EarthInfo.Population;
-        Society society = EarthManager.Instance.EarthInfo.Society; //現在の進歩度Societyを一時変数societyに代入
+        int population = EarthManager.Instance.CurrentEarthInfo.Population;
+        Society society = EarthManager.Instance.CurrentEarthInfo.Society; //現在の進歩度Societyを一時変数societyに代入
 
         if (population > _societyChangeThreshold[society])
         {
             //societyをenumデフォルトのシリアルナンバーに直してあげて足す。
             //それをobject型に変更してあげてSociety型に変更してあげる ToSocietyとかはできないので、汎用型のobjectにする機能をはさんでいる。　
             society = (Society)Enum.ToObject(typeof(Society), (int)society + 1);
-            EarthManager.Instance.EarthInfo.SetSociety(society);
+            EarthManager.Instance.CurrentEarthInfo.SetSociety(society);
         }
         Debug.Log(society);
     }

@@ -12,30 +12,30 @@ public class WorldSceneDisplay : MonoBehaviour
 
     void Update()
     {
-        populationText.text = "Ç∂ÇÒÇ±Ç§:" + EarthManager.Instance.EarthInfo.Population;
+        populationText.text = "Ç∂ÇÒÇ±Ç§:" + EarthManager.Instance.CurrentEarthInfo.Population;
 
-        societyText.text = "ÇµÇ·Ç©Ç¢:" + ConvertEnumToString(EarthManager.Instance.EarthInfo.Society);
+        societyText.text = "ÇµÇ·Ç©Ç¢:" + ConvertEnumToString(EarthManager.Instance.CurrentEarthInfo.Society);
     }
 
     private string ConvertEnumToString(Society i)
     {
-        if (EarthManager.Instance.EarthInfo.Society == Society.HUNTERGATHERER)
+        if (EarthManager.Instance.CurrentEarthInfo.Society == Society.HUNTERGATHERER)
         {
             _society = "ÇµÇ„ÇËÇÂÇ§";
         }
-        if (EarthManager.Instance.EarthInfo.Society == Society.AGRICULTURAL)
+        if (EarthManager.Instance.CurrentEarthInfo.Society == Society.AGRICULTURAL)
         {
             _society = "ÇÃÇ§Ç¨ÇÂÇ§";
         }
-        if (EarthManager.Instance.EarthInfo.Society == Society.INDUSTRIAL)
+        if (EarthManager.Instance.CurrentEarthInfo.Society == Society.INDUSTRIAL)
         {
             _society = "Ç≥ÇÒÇ¨ÇÂÇ§";
         }
-        if (EarthManager.Instance.EarthInfo.Society == Society.INFORMATION)
+        if (EarthManager.Instance.CurrentEarthInfo.Society == Society.INFORMATION)
         {
             _society = "Ç∂ÇÂÇ§ÇŸÇ§";
         }
-        if (EarthManager.Instance.EarthInfo.Society == Society.SUPERSMART)
+        if (EarthManager.Instance.CurrentEarthInfo.Society == Society.SUPERSMART)
         {
             _society = "Ç∑Ç‹Å[Ç∆";
         }
