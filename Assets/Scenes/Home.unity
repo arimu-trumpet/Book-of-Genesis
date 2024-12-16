@@ -1726,6 +1726,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437591868}
   m_CullTransparentMesh: 1
+--- !u!1 &1514489774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1514489776}
+  - component: {fileID: 1514489775}
+  m_Layer: 0
+  m_Name: EarthManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1514489775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514489774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b54ebd9eaa4a2d148a1bf14b0c4261b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EarthInfoList: []
+  CurrentEarthInfo:
+    LightName: 
+    DayName: 
+    HeavenName: 
+    LandName: 
+    SeaName: 
+    NightName: 
+    SeaColour: 0
+    GroundColour: 0
+    _population: 0
+    environmentalPollutionLevel: 0
+    CurrentSeason: 0
+    CurrentWeather: 0
+--- !u!4 &1514489776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514489774}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 140, y: 1531, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1622831809
 GameObject:
   m_ObjectHideFlags: 0
@@ -2638,10 +2696,11 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 528837247}
   - {fileID: 992562919}
   - {fileID: 1629710049}
   - {fileID: 1667049858}
   - {fileID: 1764809912}
   - {fileID: 245565007}
   - {fileID: 1622831811}
+  - {fileID: 1514489776}
+  - {fileID: 528837247}

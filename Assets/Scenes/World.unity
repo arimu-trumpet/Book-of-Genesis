@@ -767,7 +767,7 @@ MonoBehaviour:
   - {fileID: 582182246}
   - {fileID: 1896410747}
   - {fileID: 1996401663}
-  _occurRebellionPopulation: 10
+  _occurRebellionPopulation: 210000000
 --- !u!4 &546667734
 Transform:
   m_ObjectHideFlags: 0
@@ -2110,7 +2110,6 @@ MonoBehaviour:
   EarthInfoList: []
   CurrentEarthInfo:
     LightName: 
-    DarkName: 
     DayName: 
     HeavenName: 
     LandName: 
@@ -2118,6 +2117,7 @@ MonoBehaviour:
     NightName: 
     SeaColour: 0
     GroundColour: 0
+    _population: 0
     environmentalPollutionLevel: 0
     CurrentSeason: 0
     CurrentWeather: 0

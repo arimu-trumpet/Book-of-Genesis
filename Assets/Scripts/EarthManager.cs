@@ -39,22 +39,31 @@ public class EarthManager : SingletonMonoBehaviour<EarthManager>
     }
     public void SaveEarth()
     {
+        PlayerPrefsUtility.SaveList<Earth>("EarthInfo", EarthInfoList);
+
+        //Listはシリアライズが困難で保存できない　https://kan-kikuchi.hatenablog.com/entry/PlayerPrefsUtility
+        /*
         var earthJson = JsonUtility.ToJson(EarthInfoList); //今ある地球データをすべて保存
 
         PlayerPrefs.SetString("EarthInfo", earthJson);
 
         PlayerPrefs.Save();
+
+        Debug.Log(earthJson);
+        */
     }
     public void OnEnable()
     {
+        EarthInfoList = PlayerPrefsUtility.LoadList<Earth>("EarthInfo");
+        //HasKeyはPlayerPrefsUtilityが自動で確認してれる
+        /*
         if (PlayerPrefs.HasKey("EarthInfo")) //"EarthInfo"がデータを持っているかどうか
         {
-
              var earthJson = PlayerPrefs.GetString("EarthInfo");
 
-             EarthInfoList = JsonUtility.FromJson<List<Earth>>(earthJson);
+             EarthInfoList = JsonUtility.FromJson<List<Earth>>(earthJson);   
         }
-      
+        */
     }
 
     public void OnDisable()
@@ -79,13 +88,14 @@ public class Earth
 
     public string NightName;
     //地球の見た目-固定値
-    public int SeaColour;
+    public float SeaColour;
 
-    public int GroundColour;
+    public float GroundColour;
 
     //地球の状態-非固定値、低頻度の変更//
 
     //人口確認-文明発展度合い算出の際に参照
+    [SerializeField]
     private int _population; //private変数には戦闘に_つける ex)EarthManger.instance.EarthInfo._population て書いたら気持ち悪いから！
 
     //文明度-人口増加率算出の際に参照

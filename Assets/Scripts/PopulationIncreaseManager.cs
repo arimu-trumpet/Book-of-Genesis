@@ -34,10 +34,28 @@ public class PopulationIncreaseManager : MonoBehaviour //人口変化を担う
     // Update is called once per frame
     private void IncreasePopulation()
     {
-        _elapsedTime++;
-        int population = (int)Mathf.Floor(1 * (1 - Mathf.Pow(increment, _elapsedTime)) / (1 - increment));
-        EarthManager.Instance.CurrentEarthInfo.SetPoputaion(population);//unityが扱えるのは21億まで
-        Debug.Log(population);
+        _elapsedTime++; //プレイヤーがスマホを閉じてた時の計算用　保存必須！
+        if (EarthManager.Instance.CurrentEarthInfo.Population == 0) //初期値を与える
+        {
+            int population = 2; //アダムとイブ
+            EarthManager.Instance.CurrentEarthInfo.SetPoputaion(population);//unityが扱えるのは21億まで
+             
+        }
+        else if(EarthManager.Instance.CurrentEarthInfo.Population != 0) //人口停滞バグ防止
+        {
+            if((int)Mathf.Floor(((increment / 100)) * EarthManager.Instance.CurrentEarthInfo.Population) <= 1)
+            {
+                int population = EarthManager.Instance.CurrentEarthInfo.Population + 1;
+
+                EarthManager.Instance.CurrentEarthInfo.SetPoputaion(population);//unityが扱えるのは21億まで
+            }
+            if((int)Mathf.Floor(((increment / 100)) * EarthManager.Instance.CurrentEarthInfo.Population) > 1) //増加率をかけて増加分が1を超える時計算式を切り替える
+            {
+                int population = (int)Mathf.Floor((1 + (increment / 100)) * EarthManager.Instance.CurrentEarthInfo.Population); //計算式引用 : https://dmpl.doshisha.ac.jp/wp-content/uploads/2015/06/simulation_and_model.pdf 
+
+                EarthManager.Instance.CurrentEarthInfo.SetPoputaion(population);//unityが扱えるのは21億まで
+            }
+        }
     }
 
     private void IncreaseLevelofSociety()
