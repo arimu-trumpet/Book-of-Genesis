@@ -41,29 +41,13 @@ public class EarthManager : SingletonMonoBehaviour<EarthManager>
     {
         PlayerPrefsUtility.SaveList<Earth>("EarthInfo", EarthInfoList);
 
-        //Listはシリアライズが困難で保存できない　https://kan-kikuchi.hatenablog.com/entry/PlayerPrefsUtility
-        /*
-        var earthJson = JsonUtility.ToJson(EarthInfoList); //今ある地球データをすべて保存
-
-        PlayerPrefs.SetString("EarthInfo", earthJson);
-
-        PlayerPrefs.Save();
-
-        Debug.Log(earthJson);
-        */
+        //Listはシリアライズが困難で既存のplayerprefsでは保存できない　https://kan-kikuchi.hatenablog.com/entry/PlayerPrefsUtility
     }
     public void OnEnable()
     {
         EarthInfoList = PlayerPrefsUtility.LoadList<Earth>("EarthInfo");
-        //HasKeyはPlayerPrefsUtilityが自動で確認してれる
-        /*
-        if (PlayerPrefs.HasKey("EarthInfo")) //"EarthInfo"がデータを持っているかどうか
-        {
-             var earthJson = PlayerPrefs.GetString("EarthInfo");
 
-             EarthInfoList = JsonUtility.FromJson<List<Earth>>(earthJson);   
-        }
-        */
+        //HasKeyはPlayerPrefsUtilityが自動で確認してれる
     }
 
     public void OnDisable()
@@ -76,6 +60,7 @@ public class EarthManager : SingletonMonoBehaviour<EarthManager>
 [Serializable]
 public class Earth
 {
+    //プレイヤがつけた名前 HogeName
     public string LightName;
 
     public string DayName;

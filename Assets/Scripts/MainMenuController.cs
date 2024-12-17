@@ -21,10 +21,9 @@ public class MainMenuController : MonoBehaviour
             earthObject.GetComponent<Button>().onClick.AddListener(() =>
             {
                  EarthManager.Instance.CurrentEarthInfo = Earth;
+
                  SceneManager.LoadScene("World");
-
             });
-
         }
     }
 

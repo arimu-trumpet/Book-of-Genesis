@@ -14,7 +14,7 @@ public class SceneTransition : MonoBehaviour
     }
     public void ToWorld()
     {
-        SceneManager.LoadScene("World");
+        SceneManager.LoadScene("World");//XXX:七日目終了後自動でロードすると謎のデータがない地球に飛ばされる　どうにかプレイヤが作った地球に飛べるように
     }
     public void ToMenu()
     {

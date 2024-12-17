@@ -5,9 +5,9 @@ using UniRx;
 using System;
 public class PopulationIncreaseManager : MonoBehaviour //人口変化を担う
 {
-    public float increment;    //文明度(EarthManagerからゲットした)により変化する公比。
+    public float increment;    //文明度(EarthManagerからゲットした)により変化する一秒前に対する人口増加率。(これをかけて増加分が1を下回るとき、単調に1を加え続ける)
 
-    private int _elapsedTime; //人口の計算に使用
+    private int _elapsedTime; //ゲームが非アクティブ時の人口の計算に使用
 
     private Dictionary<Society, float> _societyChangeThreshold = new Dictionary<Society, float>()
     {
@@ -35,21 +35,23 @@ public class PopulationIncreaseManager : MonoBehaviour //人口変化を担う
     private void IncreasePopulation()
     {
         _elapsedTime++; //プレイヤーがスマホを閉じてた時の計算用　保存必須！
-        if (EarthManager.Instance.CurrentEarthInfo.Population == 0) //初期値を与える
+
+        if (EarthManager.Instance.CurrentEarthInfo.Population == 0) //人口の初期値を与える
         {
             int population = 2; //アダムとイブ
+
             EarthManager.Instance.CurrentEarthInfo.SetPoputaion(population);//unityが扱えるのは21億まで
-             
+
         }
-        else if(EarthManager.Instance.CurrentEarthInfo.Population != 0) //人口停滞バグ防止
+        else
         {
-            if((int)Mathf.Floor(((increment / 100)) * EarthManager.Instance.CurrentEarthInfo.Population) <= 1)
+            if ((int)Mathf.Floor(((increment / 100)) * EarthManager.Instance.CurrentEarthInfo.Population) <= 1)
             {
                 int population = EarthManager.Instance.CurrentEarthInfo.Population + 1;
 
                 EarthManager.Instance.CurrentEarthInfo.SetPoputaion(population);//unityが扱えるのは21億まで
             }
-            if((int)Mathf.Floor(((increment / 100)) * EarthManager.Instance.CurrentEarthInfo.Population) > 1) //増加率をかけて増加分が1を超える時計算式を切り替える
+            if ((int)Mathf.Floor(((increment / 100)) * EarthManager.Instance.CurrentEarthInfo.Population) > 1) //増加率をかけて増加分が1を超える時計算式を切り替える
             {
                 int population = (int)Mathf.Floor((1 + (increment / 100)) * EarthManager.Instance.CurrentEarthInfo.Population); //計算式引用 : https://dmpl.doshisha.ac.jp/wp-content/uploads/2015/06/simulation_and_model.pdf 
 
@@ -62,13 +64,16 @@ public class PopulationIncreaseManager : MonoBehaviour //人口変化を担う
     {
         //enumのsocietyとの混同を防ぐためにcivilisationを使用する
         int population = EarthManager.Instance.CurrentEarthInfo.Population;
-        Society society = EarthManager.Instance.CurrentEarthInfo.Society; //現在の進歩度Societyを一時変数societyに代入
+
+        //現在の進歩度Societyを一時変数societyに代入
+        Society society = EarthManager.Instance.CurrentEarthInfo.Society;
 
         if (population > _societyChangeThreshold[society])
         {
             //societyをenumデフォルトのシリアルナンバーに直してあげて足す。
             //それをobject型に変更してあげてSociety型に変更してあげる ToSocietyとかはできないので、汎用型のobjectにする機能をはさんでいる。　
             society = (Society)Enum.ToObject(typeof(Society), (int)society + 1);
+
             EarthManager.Instance.CurrentEarthInfo.SetSociety(society);
         }
         Debug.Log(society);
