@@ -38,7 +38,7 @@ public class CreateInputHandler : MonoBehaviour
         }
         else
         {
-            //’:flowchart[n-1“ú–Ú]
+            //’:flowchart[n-1“ú–Ú] µ“ú–Ú‚Í‰“‚·‚¬‚é‚Ì‚Å—áŠO@µ“ú–Ú : flowchart[3]
 
             if (createStepNum == 0)   //ˆê“ú–Ú
             {
@@ -47,7 +47,7 @@ public class CreateInputHandler : MonoBehaviour
                 flowchart[0].SendFungusMessage("LightEntered");
                 InputField form = inputField.GetComponent<InputField>();
                 form.text = "";
-                //add:•¶š”§ŒÀ
+                //ADD:•¶š”§ŒÀ
             }
             if (createStepNum == 1)   //ˆê“ú–Ú
             {
@@ -89,6 +89,15 @@ public class CreateInputHandler : MonoBehaviour
                 _draftEarth.SeaName = input;
                 flowchart[2].SetStringVariable("Sea", input);
                 flowchart[2].SendFungusMessage("SeaEntered");
+                InputField form = inputField.GetComponent<InputField>();
+                form.text = "";
+
+            }
+            if(createStepNum == 6)   //µ“ú–Ú
+            {
+                _draftEarth.WorldName = input;
+                flowchart[3].SetStringVariable("World", input);
+                flowchart[3].SendFungusMessage("WorldEntered");
                 InputField form = inputField.GetComponent<InputField>();
                 form.text = "";
 

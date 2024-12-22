@@ -41,7 +41,7 @@ public class EarthManager : SingletonMonoBehaviour<EarthManager>
     {
         PlayerPrefsUtility.SaveList<Earth>("EarthInfo", EarthInfoList);
 
-        //Listはシリアライズが困難で既存のplayerprefsでは保存できない　https://kan-kikuchi.hatenablog.com/entry/PlayerPrefsUtility
+        //Listはシリアライズが困難で、既存のplayerprefsでは保存できない　https://kan-kikuchi.hatenablog.com/entry/PlayerPrefsUtility
     }
     public void OnEnable()
     {
@@ -60,7 +60,7 @@ public class EarthManager : SingletonMonoBehaviour<EarthManager>
 [Serializable]
 public class Earth
 {
-    //プレイヤがつけた名前 HogeName
+    //プレイヤがつけた名前 "Hoge"Name
     public string LightName;
 
     public string DayName;
@@ -72,6 +72,8 @@ public class Earth
     public string SeaName;
 
     public string NightName;
+
+    public string WorldName;
     //地球の見た目-固定値
     public float SeaColour;
 
