@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationController : MonoBehaviour
+public class EndWorldAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _meteoriteImpact;
 
